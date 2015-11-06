@@ -1,6 +1,7 @@
-package Resume.Storage;
+package Webapp.Storage;
 
-import Resume.model.Resume;
+import Webapp.WebappException;
+import Webapp.model.Resume;
 
 import java.util.Collection;
 
@@ -11,7 +12,7 @@ import java.util.Collection;
 public interface IStorage {
     void clear();
 
-    void save(Resume resume);
+    void save(Resume resume) throws WebappException;
 
     void update(Resume resume);
 
@@ -20,6 +21,8 @@ public interface IStorage {
     void delete(String uuid);
 
     Collection<Resume> getAllSorted();
+
+    boolean isSectionSupported();
 
     int size();
 }

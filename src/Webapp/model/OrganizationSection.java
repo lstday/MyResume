@@ -1,6 +1,5 @@
-package Resume.model;
+package Webapp.model;
 
-import java.util.Date;
 import java.util.List;
 
 /**
