@@ -1,9 +1,6 @@
 package Webapp.model;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by lstday
@@ -15,7 +12,7 @@ public class Resume {
     private String location;
     private String homePage;
 
-    private List<Contact> contacts = new LinkedList<>();
+    private Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
     private List<Section> sections = new LinkedList<>();
 
     public Resume(String fullName, String location) {
@@ -50,8 +47,12 @@ public class Resume {
         sections.add(section);
     }
 
-    public void addContact(Contact contact) {
-        contacts.add(contact);
+    public void addContact(ContactType contact, String value) {
+        contacts.put(contact, value);
+    }
+
+    public String getContact(ContactType type) {
+        return contacts.get(type);
     }
 
     public String getUuid() {
@@ -70,11 +71,23 @@ public class Resume {
         return homePage;
     }
 
-    public List<Contact> getContacts() {
+    public Map<ContactType, String> getContacts() {
         return contacts;
     }
 
     public List<Section> getSections() {
         return sections;
+    }
+
+    @Override
+    public String toString() {
+        return "Resume{" +
+                "uuid='" + uuid + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", location='" + location + '\'' +
+                ", homePage='" + homePage + '\'' +
+                ", contacts=" + contacts +
+                ", sections=" + sections +
+                '}';
     }
 }
