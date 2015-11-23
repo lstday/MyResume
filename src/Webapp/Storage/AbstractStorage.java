@@ -23,8 +23,7 @@ abstract public class AbstractStorage<C> implements IStorage {
         doClear();
     }
 
-    private void doClear() {
-    }
+    protected abstract void doClear();
 
     protected abstract C getContext(String uuid);
 

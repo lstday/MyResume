@@ -5,6 +5,4 @@ package Webapp.model;
  * 22.10.15.
  */
 public class Section {
-    protected SectionType type;
-
 }

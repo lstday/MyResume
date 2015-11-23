@@ -13,7 +13,7 @@ public class Resume {
     private String homePage;
 
     private Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
-    private List<Section> sections = new LinkedList<>();
+    private Map<SectionType, Section> sections = new EnumMap<>(SectionType.class);
 
     public Resume(String fullName, String location) {
         this(UUID.randomUUID().toString(), fullName, location);
@@ -43,8 +43,8 @@ public class Resume {
         return Objects.hash(uuid, fullName, location, homePage, contacts, sections);
     }
 
-    public void addSection(Section section) {
-        sections.add(section);
+    public void addSection(SectionType sectionType, Section section) {
+        sections.put(sectionType, section);
     }
 
     public void addContact(ContactType contact, String value) {
@@ -75,7 +75,7 @@ public class Resume {
         return contacts;
     }
 
-    public List<Section> getSections() {
+    public Map<SectionType, Section> getSections() {
         return sections;
     }
 

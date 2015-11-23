@@ -16,6 +16,11 @@ public class MapStorage extends AbstractStorage<String> {
     private Map<String, Resume> MAP = new HashMap<>();
 
     @Override
+    protected void doClear() {
+        MAP.clear();
+    }
+
+    @Override
     protected String getContext(String uuid) {
         return uuid;
     }

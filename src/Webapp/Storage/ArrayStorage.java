@@ -15,6 +15,12 @@ public class ArrayStorage extends AbstractStorage<Integer> {
     private int size;
 
     @Override
+    protected void doClear() {
+        Arrays.fill(array, null);
+        size = 0;
+    }
+
+    @Override
     protected Integer getContext(String uuid) {
         for (int i = 0; i < LIMIT; i++) {
             if (array[i] != null) {
