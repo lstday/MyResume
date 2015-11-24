@@ -1,6 +1,6 @@
 package Webapp.Storage;
 
-import Webapp.WebappException;
+import Webapp.AppException;
 import Webapp.model.Resume;
 
 import java.util.Collection;
@@ -12,7 +12,7 @@ import java.util.Collection;
 public interface IStorage {
     void clear();
 
-    void save(Resume resume) throws WebappException;
+    void save(Resume resume) throws AppException;
 
     void update(Resume resume);
 

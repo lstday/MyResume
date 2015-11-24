@@ -1,12 +1,15 @@
 package Webapp.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Created by lstday
  * 22.10.15.
  */
-public class Resume {
+public class Resume implements Serializable{
+    static final long serialVersionUID = 1L;
+
     private String uuid;
     private String fullName;
     private String location;
