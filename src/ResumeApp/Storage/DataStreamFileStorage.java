@@ -1,6 +1,6 @@
-package Webapp.Storage;
+package ResumeApp.Storage;
 
-import Webapp.model.Resume;
+import ResumeApp.model.Resume;
 
 import java.io.IOException;
 import java.io.InputStream;

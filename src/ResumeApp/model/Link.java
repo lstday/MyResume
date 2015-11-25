@@ -1,8 +1,8 @@
-package Webapp.model;
+package ResumeApp.model;
 
 /**
  * Created by lstday
  * 22.10.15.
  */
-public class Section {
+public class Link {
 }

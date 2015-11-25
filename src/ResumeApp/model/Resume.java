@@ -1,13 +1,16 @@
-package Webapp.model;
+package ResumeApp.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Created by lstday
  * 22.10.15.
  */
-public class Resume implements Serializable{
+public class Resume implements Serializable {
     static final long serialVersionUID = 1L;
 
     private String uuid;
@@ -18,6 +21,13 @@ public class Resume implements Serializable{
     private Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
     private Map<SectionType, Section> sections = new EnumMap<>(SectionType.class);
 
+    public Resume() {
+    }
+
+    public Resume(String uuid) {
+        this.uuid = uuid;
+    }
+
     public Resume(String fullName, String location) {
         this(UUID.randomUUID().toString(), fullName, location);
     }
@@ -26,6 +36,17 @@ public class Resume implements Serializable{
         this.uuid = uuid;
         this.fullName = fullName;
         this.location = location;
+    }
+
+    public Resume(String uuid, String fullName, String location, String homePage) {
+        Objects.requireNonNull(uuid, "uuid must not be null!");
+        Objects.requireNonNull(fullName, "fullName must not be null!");
+        Objects.requireNonNull(location, "location must not be null!");
+        Objects.requireNonNull(homePage, "homePage must not be null!");
+        this.uuid = uuid;
+        this.fullName = fullName;
+        this.location = location;
+        this.homePage = homePage;
     }
 
     @Override
@@ -58,6 +79,10 @@ public class Resume implements Serializable{
         return contacts.get(type);
     }
 
+    public Section getSection(SectionType type) {
+        return sections.get(type);
+    }
+
     public String getUuid() {
         return uuid;
     }
@@ -80,6 +105,43 @@ public class Resume implements Serializable{
 
     public Map<SectionType, Section> getSections() {
         return sections;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setHomePage(String homePage) {
+        this.homePage = homePage;
+    }
+
+    public void addObjective(String value) {
+        addSection(SectionType.OBJECTIVE, new TextSection(value));
+    }
+
+    public void addMultiTextSection(SectionType sectionType, String... values) {
+        addSection(sectionType, new MultiTextSection(values));
+    }
+
+    public void addOrganizationSection(SectionType sectionType, Organization... values) {
+        addSection(sectionType, new OrganizationSection(values));
+    }
+
+    public int compareTo(Resume resume) {
+        return fullName.compareTo(resume.fullName);
+        //TODO мало, надо ещё
+    }
+
+    public void removeContact(ContactType type) {
+        contacts.remove(type);
     }
 
     @Override

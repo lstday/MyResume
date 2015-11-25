@@ -1,4 +1,4 @@
-package Webapp.model;
+package ResumeApp.model;
 
 
 import java.util.List;

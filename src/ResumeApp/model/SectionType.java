@@ -1,4 +1,4 @@
-package Webapp.model;
+package ResumeApp.model;
 
 /**
  * Created by lstday

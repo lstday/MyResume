@@ -1,7 +1,7 @@
-package Webapp.Storage;
+package ResumeApp.Storage;
 
-import Webapp.AppException;
-import Webapp.model.Resume;
+import ResumeApp.ResumeAppException;
+import ResumeApp.model.Resume;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -38,7 +38,7 @@ abstract public class AbstractStorage<C> implements IStorage {
         logger.info("Save resume with uuid " + resume.getUuid());
         C ctx = getContext(resume);
         if (exist(ctx)) {
-            throw new AppException("Resume " + resume.getUuid() + " is already exist");
+            throw new ResumeAppException("Resume " + resume.getUuid() + " is already exist");
         }
         doSave(ctx, resume);
     }
@@ -50,7 +50,7 @@ abstract public class AbstractStorage<C> implements IStorage {
         logger.info("Update resume with uuid" + resume.getUuid());
         C ctx = getContext(resume);
         if (!exist(ctx)) {
-            throw new AppException("Resume " + resume.getUuid() + " is not exist!");
+            throw new ResumeAppException("Resume " + resume.getUuid() + " is not exist!");
         }
         doUpdate(ctx, resume);
     }
@@ -62,7 +62,7 @@ abstract public class AbstractStorage<C> implements IStorage {
         logger.info("Load resume with uuid" + uuid);
         C ctx = getContext(uuid);
         if (!exist(ctx)) {
-            throw new AppException("Resume " + uuid + " is not exist!");
+            throw new ResumeAppException("Resume " + uuid + " is not exist!");
         }
         return doLoad(ctx); //TODO ?
     }
@@ -74,7 +74,7 @@ abstract public class AbstractStorage<C> implements IStorage {
         logger.info("Delete resume with uuid" + uuid);
         C ctx = getContext(uuid);
         if (!exist(ctx)) {
-            throw new AppException("Resume " + uuid + " is not exist!");
+            throw new ResumeAppException("Resume " + uuid + " is not exist!");
         }
         doDelete(ctx); //TODO ?
     }

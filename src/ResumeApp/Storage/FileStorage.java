@@ -1,7 +1,7 @@
-package Webapp.Storage;
+package ResumeApp.Storage;
 
-import Webapp.AppException;
-import Webapp.model.Resume;
+import ResumeApp.ResumeAppException;
+import ResumeApp.model.Resume;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -45,10 +45,10 @@ public abstract class FileStorage extends AbstractStorage<File> {
     protected void doSave(File file, Resume resume) {
         try {
             if (!file.createNewFile()) {
-                throw new AppException("Could not create file" + file.getAbsolutePath(), resume);
+                throw new ResumeAppException("Could not create file" + file.getAbsolutePath(), resume);
             }
         } catch (IOException e) {
-            throw new AppException("Could not create file" + file.getAbsolutePath(), resume, e);
+            throw new ResumeAppException("Could not create file" + file.getAbsolutePath(), resume, e);
         }
         write(file, resume);
     }
@@ -62,7 +62,7 @@ public abstract class FileStorage extends AbstractStorage<File> {
         try {
             write(new FileOutputStream(file), resume);
         } catch (IOException e) {
-            throw new AppException("Could not write file " + file.getAbsolutePath(), resume, e);
+            throw new ResumeAppException("Could not write file " + file.getAbsolutePath(), resume, e);
         }
     }
 
@@ -74,7 +74,7 @@ public abstract class FileStorage extends AbstractStorage<File> {
     @Override
     protected void doDelete(File file) {
         if (!file.delete()) {
-            throw new AppException("File " + file.getAbsolutePath() + " can not be deleted");
+            throw new ResumeAppException("File " + file.getAbsolutePath() + " can not be deleted");
         }
     }
 
@@ -93,7 +93,7 @@ public abstract class FileStorage extends AbstractStorage<File> {
         try {
             return read(new FileInputStream(file));
         } catch (IOException e) {
-            throw new AppException("Could not write the file " + file.getAbsolutePath(), e);
+            throw new ResumeAppException("Could not write the file " + file.getAbsolutePath(), e);
         }
     }
 
@@ -105,7 +105,7 @@ public abstract class FileStorage extends AbstractStorage<File> {
     public int size() {
         String[] list = dir.list();
         if (list == null) {
-            throw new AppException("Couldn not read dir " + dir.getAbsolutePath());
+            throw new ResumeAppException("Couldn not read dir " + dir.getAbsolutePath());
         }
         return list.length;
     }

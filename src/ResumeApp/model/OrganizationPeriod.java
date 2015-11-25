@@ -1,7 +1,6 @@
-package Webapp.model;
+package ResumeApp.model;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by lstday

@@ -1,34 +1,34 @@
-package Webapp;
+package ResumeApp;
 
-import Webapp.model.Resume;
+import ResumeApp.model.Resume;
 
 /**
  * Created by lstday
  * 30.10.15.
  */
-public class AppException extends RuntimeException {
+public class ResumeAppException extends RuntimeException {
     private Resume resume = null;
     private String uuid = null;
 
-    public AppException(String message) {
+    public ResumeAppException(String message) {
         super(message);
     }
 
-    public AppException(String message, Resume resume) {
+    public ResumeAppException(String message, Resume resume) {
         super(message);
         this.resume = resume;
     }
 
-    public AppException(String message, Throwable e) {
+    public ResumeAppException(String message, Throwable e) {
         super(message, e);
     }
 
-    public AppException(String message, Resume resume, Throwable e) {
+    public ResumeAppException(String message, Resume resume, Throwable e) {
         super(message, e);
         this.resume = resume;
     }
 
-    public AppException(String message, String uuid) {
+    public ResumeAppException(String message, String uuid) {
         super(message);
         this.uuid = uuid;
     }

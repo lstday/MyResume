@@ -1,7 +1,7 @@
-package Webapp.Storage;
+package ResumeApp.Storage;
 
-import Webapp.AppException;
-import Webapp.model.Resume;
+import ResumeApp.ResumeAppException;
+import ResumeApp.model.Resume;
 
 import java.io.*;
 
@@ -27,7 +27,7 @@ public class SerializeFileStorage extends FileStorage {
         try(ObjectInputStream ois = new ObjectInputStream(is)) {
             return (Resume) ois.readObject();
         } catch (ClassNotFoundException e) {
-            throw new AppException("Cannot read resume.", e);
+            throw new ResumeAppException("Cannot read resume.", e);
         }
     }
 

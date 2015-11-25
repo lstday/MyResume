@@ -1,4 +1,4 @@
-package Webapp.model;
+package ResumeApp.model;
 
 import java.util.List;
 
@@ -9,4 +9,7 @@ import java.util.List;
 public class OrganizationSection extends Section{
     private List<Organization> values;
 
+    public OrganizationSection(Organization[] values) {
+
+    }
 }
