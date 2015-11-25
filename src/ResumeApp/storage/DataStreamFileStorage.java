@@ -1,4 +1,4 @@
-package ResumeApp.Storage;
+package ResumeApp.storage;
 
 import ResumeApp.model.Resume;
 
